@@ -1,0 +1,33 @@
+
+/*无限旋转动画*/
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/*login 向下*/
+@keyframes bgposition {
+    0% {
+        background-position: 0 100%;
+    }
+
+    100% {
+        background-position: 0 calc(100% + 100px);
+    }
+}
+
+.bgposition {
+    animation-name: bgposition;
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}

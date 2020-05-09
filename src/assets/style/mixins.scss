@@ -1,0 +1,46 @@
+
+@import "./var";
+
+@mixin clearfix() {
+  &:after, &:before {
+    display: table;
+    content: ' ';
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin border($left:0, $right:0, $top:0, $bottom:0, $color: $gray-6){
+    position: relative;
+    &:after {
+        content: ' ';
+        position: absolute;
+        left: $left;
+        right: $right;
+        top:$top;
+        height: 1px;
+        background: $color ;
+    }
+}
+
+@mixin split-line(){
+
+}
+
+@mixin icon-bar( $width:5px, $height: 5px, $color: $themeColor ){
+    position: relative;
+    &:after {
+        content: ' ';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: $width;
+        height: $height;
+        background: $color ;
+        transform: translateY(-50%);
+        border-radius: $width;
+    }
+}
+
