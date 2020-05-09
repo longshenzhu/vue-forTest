@@ -1,0 +1,159 @@
+$penColor: ( 'color-1': #fe0002, 'color-2': #008000, 'color-3': #000000, );
+@each $key,
+$val in $penColor {
+    .#{$key} {
+        color: $val;
+    }
+}
+
+.canvas-tools {
+    display: flex;
+    justify-content: center;
+    //align-items: center;
+    .group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        &:not(:last-child):after {
+            position: absolute;
+            content: ' ';
+            right: 0;
+            top: 50%;
+            width: 1px;
+            height: 50px;
+            margin-top:  -25px;
+            background: #e8e8e8;
+        }
+
+        .item {
+            width: 55px !important;
+        }
+
+        .name {
+            height: 1em !important;
+            text-align: center;
+        }
+    }
+}
+
+.tools-box {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .item {
+        position: relative;
+
+        .tool-chlidren {
+            position: absolute;
+            bottom: calc(100% + 10px) ;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+            box-shadow: 0 0 10px -2px #bfbfbf;
+            border: 2px solid rgba(0, 0, 0, 0.16);
+            border-radius: 6px;
+            color: $gray-2;
+            &:after {
+                content: "";
+                position: absolute;
+                bottom: -6px;
+                left: 50%;
+                width: 10px;
+                height: 10px;
+                background: #fff;
+                transform: translateX(-50%) rotate(-45deg);
+                border: 2px solid rgba(0, 0, 0, 0.16);
+                border-top-width: 0;
+                border-right-width: 0;
+                z-index: 2;
+            }
+            .icon-box {
+                line-height: 1;
+                border-radius: 50%;
+                margin-bottom: 5px;
+                border: 2px solid transparent;
+
+                &.active {
+                    border-color: $themeColor;
+                    background: rgba($themeColor, 0.1);
+                }
+                .menu-icon {
+                    font-size: 30px;
+                }
+
+            }
+        }
+
+        &.active {
+            .arrow-down {
+                border-top-color: $themeColor;
+            }
+
+            .arrow-up {
+                border-bottom-color: $themeColor;
+            }
+            .arrow-left{
+                border-left-color: $themeColor;
+            }
+            .arrow-right {
+                border-right-color: $themeColor;
+            }
+        }
+    }
+
+    .name {
+        position: relative;
+    }
+
+    .arrow-down {
+        position: absolute;
+        right: -10px;
+        top: 50%;
+        width: 0;
+        height: 0;
+        transform: translateY(-50%);
+        border-right: 4px solid transparent;
+        border-left: 4px solid transparent;
+        border-top: 4px solid $gray-2;
+    }
+
+    .arrow-up {
+        position: absolute;
+        right: -10px;
+        top: 50%;
+        width: 0;
+        height: 0;
+        transform: translateY(-50%);
+        border-right: 4px solid transparent;
+        border-left: 4px solid transparent;
+        border-bottom: 4px solid $gray-2;
+    }
+    .arrow-left {
+        position: absolute;
+        right: -10px;
+        top: 50%;
+        width: 0;
+        height: 0;
+        transform: translateY(-50%);
+        border: solid transparent;
+        border-width:4px 0 4px 4px ;
+        border-left-color: $gray-2;
+    }
+    .arrow-right {
+        position: absolute;
+        right: -10px;
+        top: 50%;
+        width: 0;
+        height: 0;
+        transform: translateY(-50%);
+        border: solid transparent;
+        border-width:4px 4px 4px 0;
+        border-right-color: $gray-2;
+    }
+}
