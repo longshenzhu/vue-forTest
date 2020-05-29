@@ -1,0 +1,278 @@
+@import "./var";
+@import "./mixins";
+
+.test-page {
+    position: relative;
+    display: flex;
+
+    .left {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        .icon-bg {
+            position: absolute ;
+            left: -45px;
+            top: -38px;
+            font-size: 300px;
+            color: rgba($gray-6, 0.6);
+            z-index: -1;
+        }
+
+        .main {
+            flex: 1;
+            padding: 80px 100px;
+            .title {
+               margin-bottom: 70px;
+                font-size: 36px;
+                font-weight: bold;
+                color: $gray-1;
+                .en {
+                    display: block;
+                    color: $gray-4;
+                    font-weight:normal;
+                    font-size: 24px;
+                    color: $gray-1;
+                }
+            }
+            .question {
+                margin-bottom: 35px;
+                font-size: 24px;
+            }
+            .result {
+                display: flex;
+                margin-bottom: 35px;
+                .item {
+                    margin-right: 50px;
+                }
+            }
+            .user-wrapper {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+
+                .user-list {
+                    flex-flow: wrap;
+                }
+            }
+            .header {
+                padding: 0 0 0 15px;
+                margin-bottom: 20px;
+                font-size: 20px;
+                line-height:1;
+            }
+        }
+
+        .footer {
+            @include border();
+            padding: 25px 0;
+            text-align: center;
+            .btn {
+                margin:0 10px;
+            }
+        }
+    }
+
+    .right {
+        flex: 0 0 24%;
+        width: 24%;
+        background: #f5f5f5;
+        padding: 0 30px;
+        border-left: 1px solid $gray-6;
+        .header {
+           padding: 36px 0 36px 25px;
+            font-size: 20px;
+            line-height:1;
+        }
+        .list {
+            display: flex;
+            .item {
+                flex: 1;
+                text-align: center;
+                padding: 5px 0;
+                .info {
+                    font-size: 30px;
+                    color: $gray-2;
+                    line-height: 1;
+                    margin-bottom: 10px;
+                }
+                .text {
+                    color: $gray-4;
+                }
+                &:nth-child(2){
+                   border-left: 1px solid $gray-6;
+                }
+            }
+        }
+        .user-list {
+            display: flex;
+            flex-flow: wrap;
+            margin: 0 -6px;
+            .user {
+                display: flex;
+                align-items: center;
+                flex: 0 0 124px;
+                width: 124px;
+                height: 60px;
+                margin: 0 6px 15px 6px;
+                border: 1px solid $gray-6;
+                border-radius: 4px;
+                background: #fff;
+
+
+            }
+            .avatar {
+                margin: 0 8px 0 10px;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+            .name {
+                font-size: 18px;
+                color: $gray-2;
+                width: 4em;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+        }
+    }
+    .user-list {
+        display: flex;
+        flex-flow: wrap;
+        margin: 0 -6px;
+        .user {
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex: 0 0 124px;
+            width: 124px;
+            height: 60px;
+            margin: 0 6px 15px 6px;
+            border: 1px solid $gray-6;
+            border-radius: 4px;
+            background: #fff;
+            &.active {
+                border-color: $themeColor;
+                border-width: 2px;
+                background: rgba($themeColor, 0.05);
+            }
+            &.bg-gray:after {
+                position: absolute;
+                content:  ' ';
+                left:0;
+                top: 0;
+                width: 100%;
+                bottom: 0;
+                background: rgba(0,0,0,0.4);
+                border-radius:4px;
+            }
+            .badge {
+                position: absolute;
+                left: -10px;
+                top: -10px;
+                &.blue{
+                    .svg-icon {
+                        color: $themeColor;
+                    }
+                }
+                .svg-icon {
+                    font-size: 30px;
+                    color: $gray-2;
+                }
+                .count {
+                    position: absolute;
+                    left:50%;
+                    top:50%;
+                    transform: translate(-50%, -50%);
+                    font-size: 12px;
+                    font-style:italic;
+                    font-weight:bold;
+                    line-height: 1;
+                    color: #fff;
+                }
+            }
+
+
+        }
+        .avatar {
+            margin: 0 8px 0 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        .name {
+            font-size: 18px;
+            color: $gray-2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+}
+
+.answer-end {
+    .title {
+        margin-bottom: 32px;
+    }
+    .statistics-wrapper {
+        .item {
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            display: flex;
+        }
+
+        .label {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            margin-right: 16px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            line-height: 58px;
+            font-size: 30px;
+        }
+
+        .content {
+            overflow: hidden;
+            flex: 1;
+            .member {
+                display: inline-block;
+                margin-right: 25px;
+            }
+
+            .text {
+                margin-bottom: 12px;
+            }
+
+            .avatar {
+                width: 40px;
+                height: 40px;
+                object-fit: cover;
+                border-radius: 50%;
+                margin-bottom: 6px;
+            }
+        }
+        .button-wrapper{
+            align-self: center;
+            .btn {
+                margin: 0 10px;
+            }
+
+        }
+        .chart-style {
+            width: 450px;
+            height: 450px;
+        }
+    }
+}
+
