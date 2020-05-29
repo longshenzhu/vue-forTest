@@ -4,6 +4,7 @@
   </div>
 </template>
 <script>
+  //源码 https://github.com/szimek/signature_pad  
   import SignaturePad from "signature_pad";
   export default {
     name: "Whiteboard",
@@ -30,15 +31,19 @@
       },
       
       //外部容器动态赋值宽高
-      canvasWidth: {
+      boardWidth: {
         type: Number,
         default: 400
       },
-      canvasHeight: {
+      boardHeight: {
         type: Number,
         default: 300
       },
-      canvasStyle:{
+      boardBackground:{
+        type: String,
+        default: "#456547"
+      },
+      boardStyle:{
         type: String,
         default: "border:1px solid black"
       },
@@ -72,12 +77,20 @@
 
     },
     mounted: function() {
+      let wbContainer = this.$refs[this.wbContainerId];
+      wbContainer.style = this.boardStyle;
+      wbContainer.style.background= this.boardBackground;
+
+      let canvasElement = this.$refs[this.canvasId];
+      canvasElement.width= wbContainer.clientWidth;
+      canvasElement.height= wbContainer.clientHeight; 
+
       let option = {
         minWidth: 1.5,
         maxWidth: 2.5,
         dotSize:  (this.minWidth + this.maxWidth) / 2,
         minDistance: 5,
-        backgroundColor: 'rgba(255,0,0,0)',
+        backgroundColor: 'rgba(0,0,0,0)',
         penColor: 'black',
         throttle: 16,
         velocityFilterWeight: 0.7,
@@ -88,11 +101,6 @@
 
         }
       }
-      let canvasElement = this.$refs[this.canvasId];
-      canvasElement.style =  this.canvasStyle;
-      canvasElement.width= this.canvasWidth;
-      canvasElement.height= this.canvasHeight; 
-
       this.whiteboard = new SignaturePad(canvasElement, option);
 
       // this.whiteboard.resize(this.canvasWidth, this.canvasHeight);
@@ -114,16 +122,16 @@
 </script>
 <style lang="scss" scoped>
   .whiteborad {
-    position: relative;
+    // position: relative;
     width: 100%;
     height: 100%;
-
+    //background-color: #456547;
     // .mycanvas {
-    //   position: absolute;
-    //   left: 0;
-    //   top: 0;
-    //   height: 100%;
-    //   width: 100%;
+    //   //position: absolute;
+    //   //  left: 0;
+    //   // top: 0;
+    //   // height: 100%;
+    //   // width: 100%;
     // }
   }
 

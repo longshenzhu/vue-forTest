@@ -6,6 +6,9 @@
         <div class="firstwhiteboard">
             <whiteboard :whiteboardId="id"></whiteboard>
         </div>
+        <!-- <div class="firstwhiteboard">
+            <whiteboard :whiteboardId="idnew"></whiteboard>
+        </div> -->
     </div>
     
 </template>
@@ -16,7 +19,8 @@ export default {
     name: "blackBoard",
     data(){
         return {
-            id : "firstBoard"
+            id : "firstBoard",
+            idnew: "secondBoard"
         }
     },
     components:{
@@ -27,8 +31,8 @@ export default {
 </script>
 
 <style scoped>
-    /* .firstwhiteboard{
-        width: 800px;
-        height: 600px;
-    } */
+    .firstwhiteboard{
+        width: 100%;
+        height: 100%;
+    } 
 </style>
