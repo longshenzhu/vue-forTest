@@ -2,6 +2,10 @@
 function expCatch(componentPath){
     return function (target, name, descriptor){
         let oldValue = descriptor.value;
+        if (typeof oldValue !== 'function') {
+            console.error(`@time can only be used on functions, not: ${oldValue}`);
+            return;
+        }
         descriptor.value = function(){
             try {
                 return oldValue.apply(this,arguments);
