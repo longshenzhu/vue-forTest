@@ -17,7 +17,6 @@ function expCatch(componentPath){
 function log(target, name ,descriptor){
     var oldValue = descriptor.value;
     console.log(descriptor);
-
     descriptor.value = function(){
         console.log(`Calling ${name} with`,arguments);
         return oldValue.apply(this,arguments);
