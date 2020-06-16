@@ -4,6 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router/index'
 import store from './store/testStore'
+import createMessageFunc from './components/message/createMessage.js'
+Vue.prototype.$message = createMessageFunc;
 
 import ('@/assets/style/index.scss')
 import ('@/assets/fonts/iconfont')

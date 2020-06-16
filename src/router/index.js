@@ -54,8 +54,21 @@ const routes = [
         component : () => import('../components/helloWorld')                    //推荐import方式进行路由懒加载，更简洁。目前各引擎并未实现import，还是babel转es5，采用了require的方式。
         // component: resolve =>require(['../components/helloWorld'],resolve)   //require是运行时加载，import是编译时加载。
         // component: helloWorld                                                //参考 https://www.jianshu.com/p/0fb49a748f80
-        
     },
+    {   path:"/formTest", 
+        name:"formTest",
+        component: () => import('../components/form/formTest')
+    },
+    {
+        path:"/test",
+        name:"test",
+        component:()=> import('../pages/test/index')
+    },
+    {
+        path:"/test/vueDraggableTest",
+        name:"vueDraggableTest",
+        component:()=> import('../pages/test/vueDraggableTest')
+    }
 ]
 
 // 实例化路由
