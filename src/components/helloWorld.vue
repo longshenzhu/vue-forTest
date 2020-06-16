@@ -12,6 +12,7 @@
     <button @click="goppt">去ppt</button>
     <button @click="gopptPage">去pptPage</button>
     <fileUpload></fileUpload>
+    <button @click="testMessage">弹出message</button>
   </div>
 </template>
 
@@ -46,6 +47,7 @@ export default {
     }
   },
   mounted() {
+    
     // console.log(add.add(8,9));
   },
   methods:{
@@ -67,6 +69,9 @@ export default {
     },
     getMessages(){
       this.$store.dispatch("getMessages");                  //调用action 使用dispatch
+    },
+    testMessage(){
+      this.$message("这是helloworld页面");
     }
 
   },
