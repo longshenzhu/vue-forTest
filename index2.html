@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>使用vue</title>
+  </head>
+  <body>
+
+    <div id="app">
+        <p @click="clickTest">使用vue {{ msg }} </p>
+    </div>
+
+    <script src='node_modules/vue/dist/vue.js'></script>
+    <script>
+        var app = Vue.component('App', { 
+            data(){
+                return {
+                    appMsg: 'this is appMsg'
+                }
+            },
+            template: '<div id="app" ref="app" >{{appMsg}}</div>'
+        })
+        let vm = new Vue({
+            data:{
+                msg: "sdfsdf"
+            },
+            methods:{
+                clickTest(){
+                    this.msg = "点击事件完毕"
+                },
+            },
+            created(){
+                console.log(this.msg)
+            },
+            render: (h)=>{
+                return h(
+                    'div',
+                    {
+                        attrs: {
+                            id: '#app'
+                        }
+                    },
+                    [
+                        h(app),
+                        '先写一些文字',
+                        h('h1', '一则头条'),
+                        h('div', {
+                        props: {
+                            someProp: 'foobar'
+                        }
+                        })
+                    ]);
+            }
+        }).$mount('#app')
+    </script>
+  </body>
+</html>
