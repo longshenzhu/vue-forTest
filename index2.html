@@ -2,58 +2,95 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>使用vue</title>
   </head>
   <body>
-
     <div id="app">
-        <p @click="clickTest">使用vue {{ msg }} </p>
+        <p @click="clickTest">使用vue {{ msg }} {{count}}</p>
+        <app></app>
+        <!-- <subcompctor></subcompctor> -->
     </div>
-
-    <script src='node_modules/vue/dist/vue.js'></script>
+    
+    <script src="../../dist/vue.js"></script>
+    <!-- <script type="module" src="../node_modules/vue/dist/vue.esm.browser.js"></script> -->
     <script>
+        var subcompctor = Vue.extend({
+            template: '<p>{{firstName}} {{lastName}} aka {{alias}}</p>',
+            data: function () {
+                return {
+                    firstName: 'Walter',
+                    lastName: 'White',
+                    alias: 'Heisenberg'
+                }
+            }
+        });
         var app = Vue.component('App', { 
             data(){
                 return {
                     appMsg: 'this is appMsg'
                 }
             },
-            template: '<div id="app" ref="app" >{{appMsg}}</div>'
+            template: '<div id="app" ref="app" ><div>{{appMsg}}</div> <subcompctor></subcompctor><subcompctor></subcompctor></div>',
+            components:{
+                subcompctor
+            }
+
         })
         let vm = new Vue({
+            el:"#app",
             data:{
-                msg: "sdfsdf"
+                msg: "sdfsdf",
+                count : 0
             },
             methods:{
                 clickTest(){
-                    this.msg = "点击事件完毕"
+                    this.msg = "点击事件完毕",
+                    this.count ++;
                 },
             },
             created(){
                 console.log(this.msg)
             },
-            render: (h)=>{
-                return h(
-                    'div',
-                    {
-                        attrs: {
-                            id: '#app'
-                        }
-                    },
-                    [
-                        h(app),
-                        '先写一些文字',
-                        h('h1', '一则头条'),
-                        h('div', {
-                        props: {
-                            someProp: 'foobar'
-                        }
-                        })
-                    ]);
+            mounted() {
+                console.log(this)
             }
-        }).$mount('#app')
+        })
+        // let vm = new Vue({
+        //     data:{
+        //         msg: "sdfsdf",
+        //         count : 0
+        //     },
+        //     methods:{
+        //         clickTest(){
+        //             this.msg = "点击事件完毕",
+        //             this.count ++;
+        //         },
+        //     },
+        //     created(){
+        //         console.log(this.msg)
+        //     },
+        //     render: (h)=>{
+        //         return h(
+        //             'div',
+        //             {
+        //                 attrs: {
+        //                     id: '#app'
+        //                 }
+        //             },
+        //             [
+        //                 h(app),
+        //                 // h(formIndex),
+        //                 '先写一些文字 {{count}}',
+        //                 h('h1', '一则头条'),
+        //                 h('div', {
+        //                 props: {
+        //                     someProp: 'foobar'
+        //                 }
+        //                 })
+        //             ]);
+        //     }
+        // }).$mount('#app')
+
     </script>
   </body>
 </html>
