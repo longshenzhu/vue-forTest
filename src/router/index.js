@@ -65,6 +65,11 @@ const routes = [
         component:()=> import('../pages/test/index')
     },
     {
+        path:"/commonCompTest",
+        name:"commonCompTest",
+        component:()=> import('../pages/commonCompTest/index')
+    },
+    {
         path:"/test/vueDraggableTest",
         name:"vueDraggableTest",
         component:()=> import('../pages/test/vueDraggableTest')
