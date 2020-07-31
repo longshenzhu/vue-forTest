@@ -1,9 +1,11 @@
 <template>
   <div>
+      <h3>自定义按钮组件——button</h3>
       <nb-button name="bt" class="sss" id="btn1" size="large" @on-click="customEventHandler" @click.native="nativeEventHandler" @click="handle2('这里click会认为是自定义事件')" >
           <!-- <i-icon slot="icon" type="checkmark">ss</i-icon> -->
           <!-- 保存 -->
       </nb-button>
+      <h3>具有数据校验功能的表单组件——Form</h3>
       <i-form :model="formValidate" :rules="ruleValidate">
         <i-form-item label="用户名" prop="name">
             <i-input v-model="formValidate.name"></i-input>
@@ -21,7 +23,7 @@
       </div> -->
       <!-- <div>
           <h4>emitter测试</h4>
-          <i-input-parent-test>
+          <i-input-parent-test label="姓名">
               <i-input-test v-model="testValue" @input="inputEventHandler"></i-input-test>
               <i-input-test v-model="inputTest" @input="inputEventHandler"></i-input-test>
           </i-input-parent-test>
@@ -48,7 +50,13 @@ export default {
                 mail:''
             },
             ruleValidate:{
-
+                name :[
+                    {required: true,message:'用户名不能为空',trigger: 'blur'}
+                ],
+                mail:[
+                    {required:true, message: '邮箱不能为空', trigger: 'blur'},
+                    {type: 'email', message: '邮箱格式不正确', trigger:'blur' }
+                ]
             },
             testValue: 'firstInput',
             inputTest: 'secondInput'

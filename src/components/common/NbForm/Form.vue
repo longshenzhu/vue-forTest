@@ -18,12 +18,16 @@ export default {
     },
     data() {
         return {
+            //缓存所有FormItem实例的。
             fields:[]
         }
     },
     //向下提供form的整体数据
-    provide:{
-        form : this
+    provide(){
+        return {
+            form : this
+        }
+        
     },
     methods: {
         //公开方法：全部重置数据
@@ -36,6 +40,7 @@ export default {
         }
     },
     created() {
+        console.log('rules',this.rules);
         this.$on('on-form-item-add',(field)=>{
             if(field){
                 this.fields.push(field);

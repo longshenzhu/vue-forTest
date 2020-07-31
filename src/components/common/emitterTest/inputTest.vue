@@ -41,7 +41,7 @@ export default {
     }
   },
   mounted() {
-      console.log(this.foo);
+      console.log('parent',this.foo.label);
       this.$on('on-parent-event', this.parentNotify);
   },
 }

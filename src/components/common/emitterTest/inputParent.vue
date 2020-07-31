@@ -24,8 +24,11 @@ export default {
         type:String
       }
     },
-    provide:{
-      foo: this
+    provide(){
+      return {
+        foo: this
+      }
+      
     },
     data(){
       return {};
@@ -46,8 +49,7 @@ export default {
     mounted() {
       //如果没有传入prop，则无需校验，父组件就无需缓存该实例
       if(this.prop){
-        console.log("监听子组件dispatch的事件"); -
-
+        console.log("监听子组件dispatch的事件");
         //监听子组件的事件，当触发on-form-blur、on-form-change时，都会对当前的数据进行一次校验，当前的数据指整个form model
         this.$on('on-form-change', this.onFieldChange);
         
