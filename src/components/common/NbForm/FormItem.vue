@@ -34,6 +34,7 @@ export default {
         validateMessage: ''         //校验不通过时的提示信息
       }
     },
+    
     computed: {
       fieldValue(){
         return this.form.model[this.prop];
@@ -80,6 +81,13 @@ export default {
       },
       onFieldChange(value){
         this.validate('change');
+      },
+      //
+      resetField(){
+        this.validateState = '';
+        this.validateMessage = '';
+
+        this.form.model[this.prop] = this.initialValue;
       }
     },
     created(){
@@ -91,6 +99,9 @@ export default {
       //如果没有传入prop，则无需校验，父组件就无需缓存该实例
       if(this.prop){
         this.dispatch('iForm','on-form-item-add',this);
+
+        //设置初始值，以便在重置时恢复默认值
+        this.initialValue = this.fieldValue
         //监听子组件的事件，当触发on-form-blur、on-form-change时，都会对当前的数据进行一次校验，当前的数据指整个form model
         this.$on('on-form-blur',this.onFieldBlur);
         this.$on('on-form-change', this.onFieldChange);
@@ -105,5 +116,11 @@ export default {
 </script>
 
 <style>
-
+  .i-form-item-label-required:before {
+    content: '*';
+    color: red;
+  }
+  .i-form-item-message {
+    color: red;
+  }
 </style>
