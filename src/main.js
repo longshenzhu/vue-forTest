@@ -5,6 +5,11 @@ import App from './App'
 import router from './router/index'
 import store from './store/testStore'
 import createMessageFunc from './components/message/createMessage.js'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
+Vue.use(ElementUI);
+
 Vue.prototype.$message = createMessageFunc;
 
 import ('@/assets/style/index.scss')
