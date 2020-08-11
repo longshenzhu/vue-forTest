@@ -5,7 +5,8 @@
           <!-- <i-icon slot="icon" type="checkmark">ss</i-icon> -->
           <!-- 保存 -->
       </nb-button>
-      <h3>具有数据校验功能的表单组件——Form</h3>
+
+      <!-- <h3>具有数据校验功能的表单组件——Form</h3>
       <i-form ref="form" :model="formValidate" :rules="ruleValidate">
         <i-form-item label="用户名" prop="name">
             <i-input v-model="formValidate.name"></i-input>
@@ -15,7 +16,7 @@
         </i-form-item>
       </i-form>
        <button @click="handleSubmit">提交</button>
-       <button @click="handleReset">重置</button>
+       <button @click="handleReset">重置</button> -->
       <!-- <div>
           <label>i-input text</label>
           <i-form-item>
@@ -29,6 +30,12 @@
               <i-input-test v-model="inputTest" @input="inputEventHandler"></i-input-test>
           </i-input-parent-test>
       </div> -->
+
+      <!-- <h3>找到任意组件实例——findComponents 系列方法</h3> -->
+      <component-a></component-a>
+
+      <!-- 组合多选框组件 -->
+      <i-checkbox>琪瑶妹妹在吗</i-checkbox>
   </div>
 </template>
 <script>
@@ -39,6 +46,10 @@ import iInput from '../../components/common/NbForm/Input'
 
 import iInputParentTest from '../../components/common/emitterTest/inputParent'
 import iInputTest from '../../components/common/emitterTest/inputTest'
+
+import componentA from '../../components/testComponents/component-a'
+
+import iCheckbox from '../../components/checkbox/checkbox'
 
 export default {
     data: function () {
@@ -113,7 +124,11 @@ export default {
         iInput,
         
         iInputTest,
-        iInputParentTest
+        iInputParentTest,
+
+        componentA,
+
+        iCheckbox
     }
 }
 </script>
