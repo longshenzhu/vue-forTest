@@ -2,11 +2,10 @@
     <label>
         <span>
             <input 
-                style="width:50px"
                 type="checkbox" 
                 :disabled="disabled" 
                 :checked="currentValue" 
-                @change='change' >
+                @change='change' />
         </span>
         <slot></slot>
     </label>

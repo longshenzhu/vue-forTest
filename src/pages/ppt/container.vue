@@ -12,7 +12,7 @@
 
 <script>
     // import pptPage from "@/pages/ppt/pptPage";
-    import pageList from "./pageList";
+    // import pageList from "./pageList";
     import thumbNails from '@/components/Thumbnails';
     export default {
         name: "pptContainer",
@@ -72,7 +72,7 @@
             }
         },
         components:{
-            pageList,
+            // pageList,
             thumbNails
         }
     }

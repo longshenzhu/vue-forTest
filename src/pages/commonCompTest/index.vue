@@ -112,10 +112,20 @@ export default {
         },
         handleReset(){
             this.$refs.form.resetFields();
-        }
+        },
     },
     created() {
-
+        var climbStairs = function(n) {
+            const cache = new Map() || arguments[1];
+            if(n<=2){
+                cache.set(n,n);
+                return n;
+            }
+            if(!cache.get(n)){
+                cache.set(n,climbStairs(n-1,cache) + climbStairs(n-2,cache));
+            }
+            return cache.get(n);
+        }; console.log(climbStairs(10));
     },
     components:{
         NbButton,
