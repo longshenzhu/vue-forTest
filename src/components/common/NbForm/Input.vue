@@ -32,7 +32,7 @@ export default {
     handleInput(event){
       const value = event.target.value;
       this.currentValue = value;
-      this.$emit('input',value);                  //触发自定义组建的@input 事件
+      this.$emit('input',value);                                    //触发自定义组建的@input 事件
       this.dispatch('iFormItem','on-form-change',value);
     },
     //失去焦点

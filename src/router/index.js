@@ -40,15 +40,6 @@ const routes = [
         name:"blackBoard",
         component: () => import('../pages/blackBoard/blackBoard') 
     },
-    {
-        path:"/pptTest",
-        name:"ppttest",
-        component: () => import('../components/ppt') 
-    },
-    {   path:"/pptPageTest/:index", 
-        name:"pptPageTest",
-        component: () => import('../components/pptPage')
-    },
     {   path:"/helloWorld",
         name:"helloWorld",
         component : () => import('../components/helloWorld')                    //推荐import方式进行路由懒加载，更简洁。目前各引擎并未实现import，还是babel转es5，采用了require的方式。
